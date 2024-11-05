@@ -3,10 +3,6 @@ package com.keanu.software.four.b1.themostate;
 import com.github.oxo42.stateless4j.StateMachine;
 import com.github.oxo42.stateless4j.StateMachineConfig;
 
-/**
- * @author tiger
- * @date 2023-10-16 20:18
- */
 public class Heater {
 
     private StateMachineConfig<State, Event> config;

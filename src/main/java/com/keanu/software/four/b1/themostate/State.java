@@ -1,9 +1,5 @@
 package com.keanu.software.four.b1.themostate;
 
-/**
- * @author tiger
- * @date 2023-10-16 21:05
- */
 enum State {
     /**
      * 电源关闭状态

@@ -7,13 +7,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Objects;
 
-import static org.third.noteV3.Event.*;
+import static com.keanu.software.four.b1.notev3.Event.*;
 
-
-/**
- * @author tiger
- * @date 2023-11-03 20:50
- */
 public class NoteExtractor {
 
     /**
