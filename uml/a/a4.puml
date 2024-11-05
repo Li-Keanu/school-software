@@ -1,0 +1,67 @@
+@startuml
+class AliPay {
+- String number
+}
+
+class Customer {
+- String name
+- String contact
+- String deliveryAddress
+- Short active
+}
+
+class Order {
+- Date createDate
+- Short status
+}
+
+class WeixinPay {
+- String number
+}
+
+class OrderDetail {
+- Integer quantity
++ Integer calculateSubTotal()
++ Double CalculateWeight()
+}
+
+
+class Cash {
+- BigDecimal cashTendered
+}
+
+class Payment {
+- BigDecimal amount
+}
+
+class Product {
+- String title
+- Double weight
+- String description
++ BigDecimal getPriceForQuantity()
++ Double getWeight()
+}
+
+
+class WireTransfer {
+- String bankID
+- String bankName
+}
+
+class Credit {
+- String number
+- String type
+- Date expireData
+}
+
+Order "1" -- "*" Customer : "拥有"
+Order "1" -- "1" Payment : "使用"
+Order "1" -- "1" OrderDetail : "含有"
+OrderDetail "1" -- "*" Product : "包含"
+Credit --|> Payment
+AliPay --|> Payment
+WeixinPay --|> Payment
+WireTransfer --|> Payment
+Cash --|> Payment
+
+@enduml

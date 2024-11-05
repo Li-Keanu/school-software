@@ -1,0 +1,33 @@
+@startuml
+class Student {
+- Subject[] subjects
+}
+
+class School {
+- Department[] departments
+- Student[] students
+}
+
+class Instructor {
+- Department department
+- Subject[] subjects
+}
+
+class Subject {
+- Department department
+- Instructor[] instructors
+}
+
+class Department {
+- Instructor[] instructors
+- Subject[] subjects
+}
+
+Department "*" --* "1" School : "组成"
+Student "0..*" --* "1" School : "组成"
+Instructor "1..*" --* "1" Department : "组成"
+Subject "1..3" --* "1" Instructor : "教"
+Subject "1..*" --* "1" Department : "组成"
+Subject "1..5" --* "0..*" Student : "学"
+
+@enduml

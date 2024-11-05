@@ -14,8 +14,13 @@ package com.keanu.software.one;
  */
 public class Two {
     public static void main(String[] args) {
-        int[] nums = {1, -2, 3,-2, 5, 1};
-        System.out.println(maxSubArray(nums));
+        int[] nums1 = {1, -2, 3, 5, -1};
+        int[] nums2 = {1, -2, 3, -8, 5, 1};
+        int[] nums3 = {1, -2, 3, -2, 5, 1};
+
+        System.out.println(maxSubArray(nums1));
+        System.out.println(maxSubArray(nums2));
+        System.out.println(maxSubArray(nums3));
     }
 
     public static int maxSubArray(int[] nums) {
