@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+hide empty description
+[*] --> 读取字符串
+读取字符串 --> 处理字符串 : 遇到"在"中
+处理字符串 --> 读取字符串 : 处理后
+读取字符串 --> 输出 : "读取并处理完毕"
+输出 --> [*]
+
+@enduml
