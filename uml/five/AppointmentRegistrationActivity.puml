@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+repeat :用户查询医院等各类信息;
+repeat while (用户是否登录) is (no) not (yes);
+:用户选择医院;
+:用户选择科室和时间;
+:系统展示医生;
+repeat :用户选择医生;
+repeat while (医生的预约人数是否满员) is (yes) not (no);
+if (用户是否已经预约了5位医生) then (yes)
+    :预约失败;
+else (no)
+    :打印预约单;
+endif
+stop
+
+@enduml

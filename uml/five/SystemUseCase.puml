@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:用户: as user
+user --> (查询医院信息)
+user --> (注册)
+user --> (登录)
+user --> (预约挂号)
+user --> (支付挂号费用)
+user --> (取消预约)
+
+:系统管理员: as admin
+admin --> (管理用户信息)
+admin --> (维护医生出诊信息)
+
+:分诊护士: as nurse
+nurse --> (核对预约单)
+nurse --> (核对挂单号)
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+if (用户年龄是否超过60岁) then (yes)
+    :无需缴费;
+else (no)
+    :用户选择支付方式;
+    :转到支付平台;
+    :用户完成支付;
+    :系统确认支付;
+
+endif
+:打印挂单号;
+stop
+
+@enduml
