@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+actor 注册用户 as user
+actor 支付系统 as paySystem
+
+usecase 支付挂号费用 as pay
+usecase 选择可用的预约记录 as bookingRecord
+usecase 选择支付方式 as payMethod
+
+boundary 注册用户支付挂号费用界面 as payUI
+boundary 注册用户选择支付方式界面 as payMethodUI
+boundary 注册用户查看预约记录界面 as bookingRecordUI
+boundary 支付系统支付接口 as payInterface
+
+user --> payUI
+payUI --> pay
+
+user --> bookingRecordUI
+bookingRecordUI --> bookingRecord
+
+user --> payMethodUI
+payMethodUI --> payMethod
+
+pay --> payInterface
+payInterface --> paySystem
+
+@enduml

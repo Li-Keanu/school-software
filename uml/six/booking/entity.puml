@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+actor 注册用户 as user
+entity 用户信息 as userinfo
+
+usecase 登录 as login
+usecase 预约挂号 as booking
+usecase 查询医院信息 as getInfo
+entity 医院信息 as hospitalInfo
+usecase 打印预约单 as printBooking
+entity 预约信息 as bookingInfo
+usecase 打印挂号单 as printPending
+entity 挂号单信息 as pendingInfo
+usecase 支付挂号费 as payPending
+entity 费用单信息 as payInfo
+
+user --> login
+user --> getInfo
+user --> booking
+user --> printBooking
+user --> printPending
+user --> payPending
+
+user -> userinfo
+getInfo --> hospitalInfo
+printBooking --> bookingInfo
+printPending --> pendingInfo
+payPending --> payInfo
+@enduml

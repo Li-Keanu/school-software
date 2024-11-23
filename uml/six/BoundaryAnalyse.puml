@@ -1,0 +1,45 @@
+@startuml
+actor 未注册用户 as unUser
+actor 注册用户 as user
+actor 系统管理员 as admin
+actor 时间 as time
+actor 支付系统 as paySystem
+actor 挂号处 as receptionDesk
+actor 分诊台护士 as nurse
+
+usecase 实名注册 as register
+usecase 查询医院信息 as getHospitalInfo
+usecase 管理患者 as managePatients
+usecase 预约挂号 as booking
+usecase 打印预约单 as printBooking
+usecase 打印挂单号 as printPending
+usecase 支付挂号费 as payPending
+usecase 取消预约 as cancelBooking
+usecase 登录 as login
+usecase 审核注册信息 as auditRegister
+usecase 维护出诊信息 as maintainSchedule
+usecase 生成出诊信息 as generateSchedule
+usecase 处理预期未取消的预约 as processBooking
+usecase 核查预约单 as checkBooking
+usecase 核查预约单和挂号单 as checkBookingAndPending
+
+boundary 未注册用户注册界面类 as RegisterUI
+boundary 未注册用户查询医院界面类 as unUserGetHospitalInfoUI
+boundary 注册用户查询医院界面类 as userGetHospitalInfoUI
+boundary 注册用户管理患者界面类 as userManagePatientsUI
+boundary 注册用户预约挂号界面类 as userBookingUI
+boundary 用户取消预约界面类 as userCancelBookingUI
+boundary 用户登录界面类 as userLoginUI
+boundary 系统管理员登录界面类 as adminLoginUI
+boundary 系统管理员审核注册信息界面类 as adminAuditRegisterUI
+boundary 系统管理员维护出诊信息界面类 as adminMaintainScheduleUI
+boundary 时间生成出诊信息接口类 as timeGenerateScheduleInterface
+boundary 时间处理预期未取消的预约接口类 as timeProcessBookingInterface
+boundary 支付系统支付挂号费接口类 as paySystemPayPendingInterface
+boundary 支付系统取消预约接口类 as paySystemCancelBookingInterface
+boundary 挂号处取消预约界面类 as receptionDeskCancelBookingUI
+boundary 挂号处登录界面类 as receptionDeskLoginUI
+boundary 挂号处核查预约单界面类 as receptionDeskCheckBookingUI
+boundary 分诊台护士登录界面类 as nurseLoginUI
+boundary 分诊台护士核查预约单和挂号单界面类 as nurseCheckBookingAndPendingUI
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+actor 注册用户 as user
+
+boundary 用户登录界面类 as loginUI
+boundary 用户预约界面类 as bookingUI
+boundary 用户查询医院信息界面类 as infoUI
+boundary 用户打印预约单界面类 as printBookingUI
+boundary 用户打印挂号单界面类 as printPendingUI
+boundary 用户支付挂号费界面类 as payPendingUI
+
+control 登录控制类 as loginControl
+control 预约挂号控制类 as bookingControl
+control 查询医院信息控制类 as getInfoControl
+control 打印预约单控制类 as printBookingControl
+control 打印挂号单控制类 as printPendingControl
+control 支付挂号费控制类 as payPendingControl
+
+entity 用户信息 as userinfo
+entity 医院信息 as hospitalInfo
+entity 预约信息 as bookingInfo
+entity 挂号单信息 as pendingInfo
+entity 费用单信息 as payInfo
+
+
+user --> loginUI: 访问
+loginUI --> loginControl: 处理登录请求
+loginControl --> userinfo: 访问用户信息
+userinfo --> loginControl: 返回用户信息
+loginControl --> loginUI: 返回登录结果
+loginUI --> user: 响应
+
+user --> bookingUI: 访问
+bookingUI --> bookingControl: 处理预约请求
+bookingControl --> hospitalInfo: 访问医院信息
+hospitalInfo --> bookingControl: 返回医院信息
+bookingControl --> bookingInfo: 保存预约信息
+bookingControl --> payInfo: 计算费用
+bookingControl --> pendingInfo: 保存挂号单信息
+bookingInfo --> bookingControl: 返回预约信息
+bookingControl --> bookingUI: 返回预约结果
+bookingUI --> user: 响应
+
+user --> infoUI: 访问
+infoUI --> getInfoControl: 处理查询请求
+getInfoControl --> hospitalInfo: 访问医院信息
+hospitalInfo --> getInfoControl: 返回医院信息
+getInfoControl --> infoUI: 返回查询结果
+infoUI --> user: 响应
+
+user --> printBookingUI: 访问
+printBookingUI --> printBookingControl: 处理打印预约单请求
+printBookingControl --> bookingInfo: 访问预约信息
+bookingInfo --> printBookingControl: 返回预约信息
+printBookingControl --> printBookingUI: 返回打印预约单结果
+printBookingUI --> user: 响应
+
+user --> printPendingUI: 访问
+printPendingUI --> printPendingControl: 处理打印挂号单请求
+printPendingControl --> pendingInfo: 访问挂号单信息
+pendingInfo --> printPendingControl: 返回挂号单信息
+printPendingControl --> printPendingUI: 返回打印挂号单结果
+printPendingUI --> user: 响应
+
+user --> payPendingUI: 访问
+payPendingUI --> payPendingControl: 处理支付挂号费请求
+payPendingControl --> payInfo: 访问费用单信息
+payInfo --> payPendingControl: 返回费用单信息
+payPendingControl --> payPendingUI: 返回支付挂号费结果
+payPendingUI --> user: 响应
+
+@enduml

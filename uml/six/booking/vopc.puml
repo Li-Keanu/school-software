@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+usecase a
+
+boundary 用户登录界面类 as loginUI
+boundary 用户预约界面类 as bookingUI
+boundary 用户查询医院信息界面类 as infoUI
+boundary 用户打印预约单界面类 as printBookingUI
+boundary 用户打印挂号单界面类 as printPendingUI
+boundary 用户支付挂号费界面类 as payPendingUI
+
+control 登录控制类 as loginControl
+control 预约挂号控制类 as bookingControl
+control 查询医院信息控制类 as getInfoControl
+control 打印预约单控制类 as printBookingControl
+control 打印挂号单控制类 as printPendingControl
+control 支付挂号费控制类 as payPendingControl
+
+entity 用户信息 as userinfo
+entity 医院信息 as hospitalInfo
+entity 预约信息 as bookingInfo
+entity 挂号单信息 as pendingInfo
+entity 费用单信息 as payInfo
+
+loginUI --> loginControl
+loginControl --> userinfo
+
+bookingUI --> bookingControl
+bookingControl --> bookingInfo
+bookingControl --> userinfo
+bookingControl --> payInfo
+bookingControl --> pendingInfo
+
+infoUI --> getInfoControl
+getInfoControl --> hospitalInfo
+
+printBookingUI --> printBookingControl
+printBookingControl --> bookingInfo
+
+printPendingUI --> printPendingControl
+printPendingControl --> pendingInfo
+
+payPendingUI --> payPendingControl
+payPendingControl --> payInfo
+
+bookingInfo --> userinfo
+bookingInfo --> hospitalInfo
+payInfo --> bookingInfo
+payInfo --> pendingInfo
+payInfo --> userinfo
+pendingInfo --> userinfo
+@enduml

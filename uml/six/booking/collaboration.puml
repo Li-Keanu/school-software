@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+actor 注册用户 as user
+
+usecase a
+
+boundary 用户登录界面类 as loginUI
+boundary 用户预约界面类 as bookingUI
+boundary 用户查询医院信息界面类 as infoUI
+boundary 用户打印预约单界面类 as printBookingUI
+boundary 用户打印挂号单界面类 as printPendingUI
+boundary 用户支付挂号费界面类 as payPendingUI
+
+control 登录控制类 as loginControl
+control 预约挂号控制类 as bookingControl
+control 查询医院信息控制类 as getInfoControl
+control 打印预约单控制类 as printBookingControl
+control 打印挂号单控制类 as printPendingControl
+control 支付挂号费控制类 as payPendingControl
+
+entity 用户信息 as userinfo
+entity 医院信息 as hospitalInfo
+entity 预约信息 as bookingInfo
+entity 挂号单信息 as pendingInfo
+entity 费用单信息 as payInfo
+
+user --> loginUI: 登录
+loginUI --> loginControl: 处理登录请求
+loginControl --> userinfo: 确认用户信息
+loginControl --> loginUI: 返回登录结果
+
+user --> bookingUI: 预约
+bookingUI --> bookingControl: 处理预约请求
+bookingControl --> hospitalInfo: 查询医院信息
+bookingControl --> bookingInfo: 保存预约信息
+bookingControl --> payInfo: 计算费用
+bookingControl --> pendingInfo: 保存挂号单信息
+bookingControl --> bookingUI: 返回预约结果
+
+user --> infoUI: 查询医院信息
+infoUI --> getInfoControl: 查询医院信息
+getInfoControl --> hospitalInfo: 获取医院信息
+getInfoControl --> infoUI: 医院信息
+
+user --> printBookingUI: 打印预约单
+printBookingUI --> printBookingControl: 处理打印预约单请求
+printBookingControl --> bookingInfo: 获取预约信息
+printBookingControl --> printBookingUI: 返回打印预约单结果
+
+user --> printPendingUI: 打印挂号单
+printPendingUI --> printPendingControl: 处理打印挂号单请求
+printPendingControl --> pendingInfo: 获取挂号单信息
+printPendingControl --> printPendingUI: 返回打印挂号单结果
+
+user --> payPendingUI: 支付挂号费
+payPendingUI --> payPendingControl: 处理支付挂号费请求
+payPendingControl --> payInfo: 计算费用
+payPendingControl --> payPendingUI: 返回支付挂号费结果
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+usecase a
+
+boundary 注册用户支付挂号费用界面 as payUI
+boundary 注册用户选择支付方式界面 as payMethodUI
+boundary 注册用户查看预约记录界面 as bookingRecordUI
+boundary 支付系统支付接口 as payInterface
+
+control 支付挂号费用控制类 as payControl
+control 选择可用的预约记录控制类 as bookingRecordControl
+control 选择支付方式控制类 as payMethodControl
+
+entity 用户信息 as userinfo
+entity 预约记录 as bookingInfo
+entity 支付信息 as payInfo
+
+payUI --> payControl
+payControl --> payInfo
+payControl --> userinfo
+
+payMethodUI --> payMethodControl
+payMethodControl --> payInfo
+
+bookingRecordUI --> bookingRecordControl
+bookingRecordControl --> bookingInfo
+
+payInterface --> payControl
+
+bookingInfo --> userinfo
+payInfo --> userinfo
+
+@enduml

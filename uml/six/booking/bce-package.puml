@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+package "预约挂号模块" {
+    package "边界类" as B {
+        class 用户登录界面类
+        class 用户预约界面类
+        class 用户查询医院信息界面类
+        class 用户打印预约单界面类
+        class 用户打印挂号单界面类
+        class 用户支付挂号费界面类
+    }
+    package "控制类" as C{
+        class 登录控制类
+        class 预约挂号控制类
+        class 查询医院信息控制类
+        class 打印预约单控制类
+        class 打印挂号单控制类
+        class 支付挂号费控制类
+    }
+    package "实体类" as E {
+        class 用户信息
+        class 医院信息
+        class 预约信息
+        class 挂号单信息
+        class 费用单信息
+    }
+    B --> C
+    C --> E
+}
+@enduml
