@@ -1,0 +1,41 @@
+@startuml
+class GoldDiscountStrategy {
++ double calculateDiscount(double)
+}
+
+class Client {
++ {static} void main(String[])
+}
+
+class FullPriceStrategy {
++ double calculateDiscount(double)
+}
+
+class SilverDiscountStrategy {
++ double calculateDiscount(double)
+}
+
+class StandardRoom {
++ <<Create>> StandardRoom(DiscountStrategy)
+}
+
+interface DiscountStrategy {
+~ double calculateDiscount(double)
+}
+
+abstract class HotelRoom {
+# DiscountStrategy discountStrategy
++ <<Create>> HotelRoom(DiscountStrategy)
++ double calculatePrice(double)
+}
+
+
+
+
+DiscountStrategy <|.. GoldDiscountStrategy
+DiscountStrategy <|.. FullPriceStrategy
+DiscountStrategy <|.. SilverDiscountStrategy
+HotelRoom <|-- StandardRoom
+DiscountStrategy o-- HotelRoom
+HotelRoom <.. Client
+@enduml

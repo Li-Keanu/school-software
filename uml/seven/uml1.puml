@@ -1,0 +1,34 @@
+@startuml
+class Piegon {
++ <<Create>> Piegon()
++ void display()
+}
+
+class FreeFly {
++ <<Create>> FreeFly()
++ void fly()
+}
+
+class Client {
++ <<Create>> Client()
+}
+
+
+abstract class Bird {
+# FlyBehavior flyBehavior
++ <<Create>> Bird()
++ {abstract}void display()
+}
+
+
+interface FlyBehavior {
+~ void fly()
+}
+
+
+
+Bird <|-- Piegon
+FlyBehavior <|.. FreeFly
+FlyBehavior o-- Bird
+Bird <.. Client
+@enduml
